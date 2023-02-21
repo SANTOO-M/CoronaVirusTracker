@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+   -->
+   <link rel="stylesheet" th:href="@{/CSS/bootstrap.min.css}">
+   <link rel="stylesheet" th:href="@{/CSS/jquery.dataTables.min.css}">
+   <script th:src="@{/JS/jquery.dataTables.min.js}"></script>
+   <head>
+    <title>Corona Virus Tracker application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script>
+    	$(document).ready(function(){
+    		$("#myTable").dataTable();   		
+    	});
+    </script>
+    <Style>
+    	#flag{
+    		margin:auto;
+    		height:50px;
+    		width:75px;
+    		box-sizing: border-box;
+    		background-size: cover; 
+    	}
+    	
+    </Style>
+  </head>
+
+  <body>
+  <div class="jumbotron" style="background-image: url(/images/corona.jpg); background-size: cover;">
+  	<div class="p-3 mb-2">
+    <h1 class="heading text-light">Corona Virus Tracker application</h1><br>
+    <p style="color:white">This Application List the Current number of cases reported across the globe</p>
+    <div class="badge bg-danger text-light">
+    	<a href="#" th:href="@{/viewChart}" role="button" class="btn btn-danger">
+    <h1 th:text="${totalDeathsReported}"></h1></a>
+    </div>
+    <p class="lead" style="color: white"><b>Total cases reported as of Today</b></p>
+    </div>
+    <marquee behavior="alternate">
+    	<div class="badge text-light">
+    	<h2><b>Wear mask, use sanitizer and maintain social distancing...</b></h2>
+    	</div>
+    </marquee>
+    </div>
+    <div class="container">
+  <table class="table table-striped" id="myTable" border=1>
+      <thead>
+      <tr class="table-row bg-dark text-light">
+        <th>State</th>
+        <th>Flag</th>
+        <th>Country</th>
+        <th>Total Deaths Reported</th>
+         <th>Changes Since Last Day</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="locationstate : ${LocationStates}">
+        <td th:text="${locationstate.state}"></td>
+        <td id="flag" th:style:"'background-image: url('+ @{'/images/flags/' + ${locationstate.country}} +'.png);'"></td>
+        <td th:text="${locationstate.country}"></td>
+        <td th:text="${locationstate.latestTotalDeaths}">0</td>
+        <td th:text="${locationstate.differFromPrevay}">0</td>
+      </tr>
+      </tbody>
+    </table>
+    </div>
+  </body>
+</html>
