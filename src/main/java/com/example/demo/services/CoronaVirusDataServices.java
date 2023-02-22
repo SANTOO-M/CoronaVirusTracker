@@ -22,6 +22,8 @@ import com.example.demo.model.LocationStates;
 public class CoronaVirusDataServices 
 {
 
+	private CoronaVirusDataServiceRepository repo;
+	
 	private List<LocationStates>allstates=new ArrayList<LocationStates>();
 	
 	
@@ -60,7 +62,21 @@ public class CoronaVirusDataServices
 	this.allstates=newstates;
 		
 	}
-}
+
+	/*
+	 * public List<LocationStates> findByCountryName(String country) {
+	 * List<LocationStates> locationstates=repo.findBycountry(country); return
+	 * locationstates; }
+	 *//*
+		 * public List<LocationStates> findcountryBylatestTotalDeath(int count) {
+		 * List<LocationStates> locationstates=repo.findBylatestTotalDeaths(count);
+		 * return locationstates; }
+		 */
+	/*
+	 * public List<LocationStates> findTotalDeaths(int count) { // TODO
+	 * Auto-generated method stub return null; }
+	 */
+	}
 
 
 /*

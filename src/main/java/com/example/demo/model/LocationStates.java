@@ -1,18 +1,24 @@
 package com.example.demo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GeneratorType;
+
 @Entity
 @Table(name="LocationStates")
-public class LocationStates 
+public class LocationStates
 {
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int countryid;
+	
 	private String state;
 	private String country;
 	private int latestTotalDeaths;
@@ -54,6 +60,8 @@ public class LocationStates
 				+ ", latestTotalDeaths=" + latestTotalDeaths + ", differFromPrevay=" + differFromPrevay + "]";
 	}
 	
-
+	public LocationStates() {
+		System.out.println("Location obj created");
+	}
 	
 }

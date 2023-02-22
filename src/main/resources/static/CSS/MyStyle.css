@@ -1,1 +1,14 @@
-@charset "ISO-8859-1";
+/* @charset "ISO-8859-1";
+.card-header {
+  display: flex;
+  align-items: flex-end;
+  height: 80px;
+}
+
+.card-body {
+  flex: 1;
+  margin: 0 5px;
+  background-color: #007bff;
+  height: 0;
+  transition: height 0.5s ease-in-out;
+} */

@@ -53,7 +53,7 @@ public class HomeController {
 		return allstates;
 	}
 	 
-	@RequestMapping(path="/collectCharData/{id}",produces = {"application/json"})
+	@RequestMapping(path="/collectChartData/{id}",produces = {"application/json"})
 	@ResponseBody
 	public Optional<LocationStates> collectChartDataByCountryID(@PathVariable("id") int countryid,Model model){
 		System.out.println("View Chart Data by Country ID here...");
@@ -61,25 +61,24 @@ public class HomeController {
 		return locationStates;
 	}
 	
-	@RequestMapping(path = "/collectChartData/country={name}",produces = {"application/json"})
+	@RequestMapping(path = "/collectChartData/country/{name}",produces = {"application/json"})
 	@ResponseBody
-	public LocationStates collectChartDataByCountryName(@PathVariable("name") String countryName,Model model)
+	public List<LocationStates> collectChartDataByCountryName(@PathVariable("name") String countryName,Model model)
 	{
 		System.out.println("View Chart Data by Country Name here...");
-		LocationStates locationstates=repository.findBycountry(countryName);
+		List<LocationStates> locationstates=repository.findBycountry(countryName);
 		return locationstates;
 	}
 	
-	/*
-	 * @RequestMapping(path = "/collectChartData/top={count}",produces =
-	 * {"application/json"})
-	 * 
-	 * @ResponseBody public List<LocationStates>
-	 * collectChartDataByCountryTop(@PathVariable("count") int count,Model model){
-	 * System.out.println("View Chart Data by Count..."); List<LocationStates>
-	 * locationstates=repository.findcountryBylatestTotalDeath(count); return
-	 * locationstates; }
-	 */
+	
+	@RequestMapping(path = "/collectChartData/top={count}",produces ={"application/json"})
+	@ResponseBody 
+	public List<LocationStates> collectChartDataByCountryTop(@PathVariable("count") int count,Model model){
+		System.out.println("View Chart Data by total deaths ..."); 
+		List<LocationStates> locationstates=repository.findcountryBylatestTotalDeaths(count); 
+		return locationstates; 
+	}
+	 
 	
 	@RequestMapping(value="/viewChart",method = RequestMethod.GET)
 	public ModelAndView viewChart() {

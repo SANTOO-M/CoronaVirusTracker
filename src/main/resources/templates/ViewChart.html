@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<meta charset="ISO-8859-1">
 <link rel="stylesheet" href="/CSS/bootstrap.min.css">
 <link rel='stylesheet' th:href="@{/CSS/MyStyle.css}">
-<script th:src="@{/JS/Chart.js}"></script>
+<script src="/JS/Chart.js"></script>
+<head>
+<meta charset="ISO-8859-1">
 <title>View Chart</title>
 </head>
 <body>
@@ -24,13 +24,15 @@
 			
 			const queryString=window.location.search;
 			console.log('Query String='+queryString);
+			
 			console.log("Entering getChartData Method...");
+			
 			let myURL=document.getElementById("myURL");
 			const apiurl=myURL.innerHTML;
 			const response=await fetch(apiurl);
 			console.log(response);
-			const CharData=await response.json();
-			console.log('barChartData length='+CharData.length);
+			const ChartData=await response.json();
+			console.log('barChartData length='+ChartData.length);
 			countries=[];
 			deathcount=[];
 		}
