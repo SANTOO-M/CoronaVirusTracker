@@ -18,15 +18,15 @@
     		margin:auto;
     		height:50px;
     		width:75px;
-    		box-sizing: border-box;
-    		background-size: cover; 
+    		box-sizing:border-box;
+    		background-size:cover; 
     	}
     	
     </Style>
-  </head>
+  </head> 
 
   <body>
-  <div class="jumbotron" style="background-image: url(/images/corona.jpg); background-size: cover;">
+  <div class="jumbotron" style="background-image: url(/images/corona.png); background-size: cover;">
   	<div class="p-3 mb-2">
     <h1 class="heading text-light">Corona Virus Tracker application</h1><br>
     <p style="color:white">This Application List the Current number of cases reported across the globe</p>
@@ -48,15 +48,15 @@
       <tr class="table-row bg-dark text-light">
         <th>State</th>
         <th>Flag</th>
-        <th>Country</th>
+        <th>Country</th> 
         <th>Total Deaths Reported</th>
          <th>Changes Since Last Day</th>
       </tr>
-      </thead>
+      </thead> 
       <tbody>
       <tr th:each="locationstate : ${LocationStates}">
         <td th:text="${locationstate.state}"></td>
-        <td id="flag" th:style:"'background-image: url('+ @{'/images/flags/' + ${locationstate.country}} +'.png);'"></td>
+        <td id="flag" th:style="'background-image: url('+ @{'/images/flags/' + ${locationstate.country}} +'.png?);'"></td>
         <td th:text="${locationstate.country}"></td>
         <td th:text="${locationstate.latestTotalDeaths}">0</td>
         <td th:text="${locationstate.differFromPrevay}">0</td>
