@@ -1,41 +1,54 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <link rel="stylesheet" href="/CSS/bootstrap.min.css">
-<link rel='stylesheet' th:href="@{/CSS/MyStyle.css}">
-<script src="/JS/Chart.js"></script>
+<link rel='stylesheet' href="/CSS/MyStyle.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <head>
 <meta charset="ISO-8859-1">
 <title>View Chart</title>
 </head>
 <body>
-	<h2 th:value="${myURL}" th:text="${myURL}" id="myURL">Hello Good Morning!</h2>
-	<div class="card text-center m-5" id="myChart">
-		<div class="card-header">
-			<h1>Corona Virus Death Report</h1>
-		</div>
-		<div class="card-body">
-			<canvas id="chart-area" width="800" height="450"></canvas>
-		</div>
+	<div class="container">
+		<h1>Corona Tracker</h1>
+		<canvas id="myChart"></canvas>
 	</div>
 	<script>
-		getChartData();
-		async function getChartData(){
-			console.log(document.URL);
-			
-			const queryString=window.location.search;
-			console.log('Query String='+queryString);
-			
-			console.log("Entering getChartData Method...");
-			
-			let myURL=document.getElementById("myURL");
-			const apiurl=myURL.innerHTML;
-			const response=await fetch(apiurl);
-			console.log(response);
-			const ChartData=await response.json();
-			console.log('barChartData length='+ChartData.length);
-			countries=[];
-			deathcount=[];
+		var xmlhttp=new XMLHttpRequest();
+		var url="http://localhost:8082/MyData.json";
+		xmlhttp.open("GET",url,true);
+		xmlhttp.send();
+		xmlhttp.onreadystatechange=function(){
+			if(this.readystate==4 && this.status==200){
+				var data=JSON.parse(this.responseText);
+				var country=data.myData.map(function(elem){
+					return elem.country;
+				})
+				var latestTotalDeaths=data.myData.map(function(elem){
+					return elem.latestTotalDeaths;
+				})
+			}			
 		}
-	</script>
+		const ctx = document.getElementById('myChart');
+
+			new Chart(ctx, {
+			  type: 'bar',
+			  data: {
+			    labels: country,
+			    datasets: [{
+    			  label: latestTotalDeaths,
+    			  data: 'latestTotalDeaths',
+    			  borderWidth: 1
+   			 }]
+  			},
+  			options: {
+  			  scales: {
+  			    y: {
+  			      beginAtZero: true
+  			    }
+  			  }
+  			}
+		});
+</script>
 </body>
 </html>
+

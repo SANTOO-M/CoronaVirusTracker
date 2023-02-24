@@ -1,14 +1,27 @@
-/* @charset "ISO-8859-1";
-.card-header {
-  display: flex;
-  align-items: flex-end;
-  height: 80px;
+*,*:after,*:before{
+	-webkit-box-sizing:border-box;
+	-mox-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
 }
-
-.card-body {
-  flex: 1;
-  margin: 0 5px;
-  background-color: #007bff;
-  height: 0;
-  transition: height 0.5s ease-in-out;
-} */
+body{
+	font-family:arial;
+	font-size:16px;
+	margin:0;
+	background:#fff;
+	color:#000;
+	display:flex;
+	justify-content:space-around;
+	align-items:center;
+	min-height:100vh;
+}
+.container{
+	width:70%;
+}
+h1{
+	font-size: 46px;
+	text-align:center;
+}
+#canvas{
+	width:100px;
+}

@@ -82,7 +82,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/viewChart",method = RequestMethod.GET)
 	public ModelAndView viewChart() {
-		return new ModelAndView("viewChart").addObject("myURL",new String("http://localhost:8082/collectChartData"));
+		return new ModelAndView("/viewChart").addObject("myURL",new String("http://localhost:8082/collectChartData"));
 	}
 
 	@GetMapping("/viewChart/{id}")
