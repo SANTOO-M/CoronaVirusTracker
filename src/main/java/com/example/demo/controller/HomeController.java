@@ -80,23 +80,26 @@ public class HomeController {
 	}
 	 
 	
-	@RequestMapping(value="/viewChart",method = RequestMethod.GET)
+	@RequestMapping(value="/ViewChart",method = RequestMethod.GET)
 	public ModelAndView viewChart() {
-		return new ModelAndView("/viewChart").addObject("myURL",new String("http://localhost:8082/collectChartData"));
+		return new ModelAndView("ViewChart").addObject("myURL",new String("http://localhost:8082/collectChartData"));
 	}
 
-	@GetMapping("/viewChart/{id}")
-	public String ViewChartById(@PathVariable("id") int id,Model m) {
-		m.addAttribute("id",id);
-		m.addAttribute("myURL", "http://localhost:8082/collectChartData/"+id);
+	@GetMapping("/ViewChart/top={count}")
+	public String ViewChartByTopDeathCase(@PathVariable("count") int count,Model m){
+		m.addAttribute("count",count);
+		m.addAttribute("myURL", "http://localhost:8082/collectChartData/top="+count);
 		return "ViewChart";
 	}
 	
-	@GetMapping("/collectChartData/country={name}")
-	public String ViewChartByCountryName(@RequestParam String name,Model m) {
-		m.addAttribute("myURL", "http://localhost:8082/collectChartDate/country?"+name);
+	
+	@GetMapping("/ViewChart/country/{name}")
+	public String ViewChartByCountryName(@PathVariable("name") String name,Model m) {
+		m.addAttribute("name", name);
+		m.addAttribute("myURL", "http://localhost:8082/collectChartData/country/"+name);
 		return "ViewChart";
 	}
+
 }
 
 

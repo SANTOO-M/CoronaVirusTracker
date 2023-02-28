@@ -63,23 +63,4 @@ public class CoronaVirusDataServices
 		
 	}
 
-	/*
-	 * public List<LocationStates> findByCountryName(String country) {
-	 * List<LocationStates> locationstates=repo.findBycountry(country); return
-	 * locationstates; }
-	 *//*
-		 * public List<LocationStates> findcountryBylatestTotalDeath(int count) {
-		 * List<LocationStates> locationstates=repo.findBylatestTotalDeaths(count);
-		 * return locationstates; }
-		 */
-	/*
-	 * public List<LocationStates> findTotalDeaths(int count) { // TODO
-	 * Auto-generated method stub return null; }
-	 */
-	}
-
-
-/*
- * https://www.interviewbit.com/blog/java-11-features/
- * HttpClient, HttpRequest, HttpResponse
- */
+}
